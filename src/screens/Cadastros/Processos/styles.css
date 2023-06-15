@@ -1,0 +1,12 @@
+html, body, #app, #app>div {
+    height: 100%
+  }
+
+.processos {
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+    width: 70%;
+}

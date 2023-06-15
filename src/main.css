@@ -1,0 +1,15 @@
+html,
+body,
+#root,
+.app {
+  height: 100%;
+  width: 100%;
+  font-family: "Rubik", sans-serif;
+  color: rgb(0, 0, 0);
+}
+
+*,
+html {
+  margin: 0;
+  padding: 0;
+}

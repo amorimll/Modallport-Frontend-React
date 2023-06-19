@@ -1,0 +1,85 @@
+.processos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+}
+
+
+.processos-div {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+  
+.table {
+width: 100%;
+}
+
+@media (min-width: 768px) {
+    .processos-div {
+        width: 70%;
+    }
+}
+
+.td-button {
+    display: flex;
+}
+
+.button-vistoria {
+    margin-right: 10px;
+    flex-grow: 0; /* Evita que os botões cresçam para ocupar mais espaço */
+}
+
+/* Adicione a classe d-flex ao elemento <td> que contém os botões */
+.td-button.d-flex {
+    display: flex;
+}
+  
+
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+.itens-ordem-tipo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.item-ordem {
+    width: 49%;
+}
+
+.item-tipo {
+    width: 49%;
+}
+
+.itens-editar-render {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-editar-input {
+    margin-right: 5px;
+    margin-left: 5px;
+    height: 40px;
+}
+
+.item-editar-select {
+    width: 20%;
+}
+
+.btn-editar {
+    height: 40px;
+}
+
+.vistoria-opcoes-button {
+    margin-bottom: 10px;
+}
+
+.vistoria-respostas-button {
+    margin-bottom: 10px;
+}

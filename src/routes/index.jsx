@@ -8,7 +8,7 @@ const RoutesPaths = () => {
     <BrowserRouter>
         <Routes>
           <Route path="/cadastros/processos" element={<Processos />}></Route>
-          <Route path="/cadastros/modelosvistoria" element={<ModelosVistoria />}></Route>
+          <Route path="/cadastros/vistorias" element={<ModelosVistoria />}></Route>
         </Routes>
       </BrowserRouter>
   )

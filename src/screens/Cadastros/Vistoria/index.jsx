@@ -15,7 +15,7 @@ const ModelosVistoria = () => {
     processo: "",
   });
   const [opcoes, setOpcoes] = useState("")
-  const [respostas, setRespostas] = useState([])
+  const [respostas, setRespostas] = useState("")
   const [itensData, setItensData] = useState({
     descricaoItem: "",
     ordem: "",
@@ -36,37 +36,48 @@ const ModelosVistoria = () => {
   const [filteredVistorias, setFilteredVistorias] = useState([]);
 
   const handleAddItem = () => {
-    const newItem = {
-      descricao: itensData.descricaoItem,
-      ordem: Number(itensData.ordem),
-      tipo: Number(itensData.tipo),
-      opcoes: itensData.opcoes,
-      respostas: itensData.respostas
-    };
-
-    setItens([...itens, newItem]);
-    setItensData({ ...itensData, opcoes: [], respostas: [] });
-    console.log(itensData)
+    if (itensData.descricaoItem.trim() == "" || itensData.ordem == "") {
+      setError("Dados inválidos.")
+    } else {
+      const newItem = {
+        descricao: itensData.descricaoItem,
+        ordem: Number(itensData.ordem),
+        tipo: Number(itensData.tipo),
+        opcoes: itensData.opcoes,
+        respostas: itensData.respostas
+      };
+  
+      setItens([...itens, newItem]);
+      setItensData({ ...itensData, descricaoItem: "", ordem: "", tipo: 1, opcoes: [], respostas: [] });
+      setError("")
+      console.log(itens)
+    }
   };
 
   const adicionarOpcao = () => {
-    if (opcoes.trim() !== '') {
       const novaOpcao = opcoes;
-      const opcoesAtualizadas = [...itensData.opcoes, novaOpcao];
-      setItensData({ ...itensData, opcoes: opcoesAtualizadas });
-      setOpcoes('');
-      console.log(itensData.opcoes)
-    }
+      if (novaOpcao.trim() === '') {
+        setError("Dados inválidos.")
+      } else {
+        const opcoesAtualizadas = [...itensData.opcoes, novaOpcao];
+        setItensData({ ...itensData, opcoes: opcoesAtualizadas });
+        setOpcoes('');
+        setError("")
+        console.log(itensData.opcoes)
+      }
   }
 
   const adicionarResposta = () => {
-    if (respostas.trim() !== '') {
       const novaResposta = respostas;
-      const respostasAtualizadas = [...itensData.respostas, novaResposta];
-      setItensData({ ...itensData, respostas: respostasAtualizadas });
-      setRespostas('');
-      console.log(itensData.respostas)
-    }
+      if (novaResposta.trim() === '') {
+        setError("Dados inválidos.")
+      } else {
+        const respostasAtualizadas = [...itensData.respostas, novaResposta];
+        setItensData({ ...itensData, respostas: respostasAtualizadas });
+        setRespostas('');
+        setError("")
+        console.log(itensData.respostas)
+      }
   }
 
   const handleItemChange = (itemId, field, value) => {
@@ -160,6 +171,8 @@ const ModelosVistoria = () => {
   const handleClean = () => {
     setEditingId()
     setFormData({...formData, descricao: "", processo: ""})
+    setItensData({...itensData, descricaoItem: "", ordem: "",opcoes: [], respostas: []})
+    setItens([])
     setError("")
   }
 
@@ -300,6 +313,11 @@ const ModelosVistoria = () => {
                     >
                       Adicionar Opção
                     </button>
+                    {itensData.opcoes != 0 ? (
+                      <>
+                        <p>{itensData.opcoes.length} Opções Adicionadas.</p>
+                      </>
+                    ) : null}
                   </>
                 ) : null}
                 <h5>Respostas</h5>
@@ -313,11 +331,21 @@ const ModelosVistoria = () => {
                   onChange={(event) => setRespostas(event.target.value)}
                 />
                 <button type="button" className="vistoria-respostas-button btn btn-primary" onClick={adicionarResposta}>Adicionar Resposta</button>
+                {itensData.respostas != 0 ? (
+                      <>
+                        <p>{itensData.respostas.length} Respostas Adicionadas.</p>
+                      </>
+                    ) : null}
                 </div>
                 <button type="button" className="btn btn-primary" onClick={handleAddItem}>
                   Adicionar Item
                 </button>
               </div>
+              {itens.length != 0 ? (
+                      <>
+                        <p>{itens.length} Itens Adicionados.</p>
+                      </>
+                    ) : null}
               <div style={{color: "red"}}>{error}</div>
             </div>
             <div className="modal-footer">

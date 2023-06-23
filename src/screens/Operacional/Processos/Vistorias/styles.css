@@ -1,0 +1,50 @@
+.processos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+}
+
+
+.processos-div {
+    padding: 20px;
+    box-sizing: border-box;
+}
+  
+.table {
+width: 100%;
+}
+
+@media (min-width: 768px) {
+    .processos-div {
+        width: 70%;
+    }
+
+    .input-busca {
+        width: 70%;
+    }
+}
+
+.td-button {
+    display: flex;
+}
+
+.button-processo {
+    margin-right: 10px;
+    flex-grow: 0; /* Evita que os botões cresçam para ocupar mais espaço */
+}
+/* Adicione a classe d-flex ao elemento <td> que contém os botões */
+.td-button.d-flex {
+    display: flex;
+}
+
+.input-busca {
+    width: 90%;
+}
+
+.input-group {
+    width: 100%;
+}
+

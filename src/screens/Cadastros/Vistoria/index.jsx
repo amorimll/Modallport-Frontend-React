@@ -95,6 +95,7 @@ const ModelosVistoria = () => {
 
   const handlePostAndPut = async () => {
     if (!editingId) {
+      console.log(formData.descricao, formData.processo)
       if (formData.descricao == "" || formData.processo == "") {
         setError("Dados inválidos.")
       } else {
@@ -103,35 +104,33 @@ const ModelosVistoria = () => {
           processo: Number(formData.processo)
         });
 
-        if (itensData.descricaoItem == "" || itensData.ordem == "" || itensData.tipo == "") {
-          setError("Dados inválidos.")
-        } else {
-          if (res) {
-            itens.forEach(async (item) => {
-              const itemRes = await axios.post(`https://localhost:44350/api/Itens?idVistoria=${res.data.idVistoria}`, {
-                descricao: item.descricao,
-                ordem: Number(item.ordem),
-                tipo: Number(item.tipo)
+        if (itens.length != 0) {
+            if (res) {
+              itens.forEach(async (item) => {
+                const itemRes = await axios.post(`https://localhost:44350/api/Itens?idVistoria=${res.data.idVistoria}`, {
+                  descricao: item.descricao,
+                  ordem: Number(item.ordem),
+                  tipo: Number(item.tipo)
+                })
+    
+                if (item.opcoes && item.respostas) {
+                  item.opcoes.forEach(async (opcao) => {
+                    await axios.post(`https://localhost:44350/api/Opcoes?idItem=${itemRes.data.idItem}`, {
+                      opcao
+                    })
+                  })
+        
+                  item.respostas.forEach(async (resposta) => {
+                    await axios.post(`https://localhost:44350/api/Respostas?idItem=${itemRes.data.idItem}`, {
+                      resposta
+                    })
+                  })
+                }
+                console.log(itemRes)
               })
-  
-              if (item.opcoes && item.respostas) {
-                item.opcoes.forEach(async (opcao) => {
-                  await axios.post(`https://localhost:44350/api/Opcoes?idItem=${itemRes.data.idItem}`, {
-                    opcao
-                  })
-                })
-      
-                item.respostas.forEach(async (resposta) => {
-                  await axios.post(`https://localhost:44350/api/Respostas?idItem=${itemRes.data.idItem}`, {
-                    resposta
-                  })
-                })
-              }
-              console.log(itemRes)
-            })
           }
-          navigate(0);
         }
+        navigate(0);
       }
     } else {
       if (formData.descricao == "" || formData.processo == "") {

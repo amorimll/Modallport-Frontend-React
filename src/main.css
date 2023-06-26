@@ -13,3 +13,80 @@ html {
   margin: 0;
   padding: 0;
 }
+
+
+.hover {
+  cursor: pointer;
+  transition: 0.3s;
+  background: red;
+}
+
+  .hover:hover {
+      background: white;
+      border: none;
+      -webkit-box-shadow: 10px 10px 61px -22px rgba(0,0,0,0.75);
+      -moz-box-shadow: 10px 10px 61px -22px rgba(0,0,0,0.75);
+      box-shadow: 10px 10px 61px -22px rgba(0,0,0,0.75);
+  }
+
+
+.process-description {
+  max-width: 200px;
+  overflow: hidden; /* Hide any content that exceeds the container */
+  white-space: nowrap; /* Prevent line breaks within the text */
+  text-overflow: ellipsis;
+}
+
+.process-itens {
+  max-width: 200px;
+  overflow: hidden; /* Hide any content that exceeds the container */
+  white-space: nowrap; /* Prevent line breaks within the text */
+  text-overflow: ellipsis;
+}
+
+.process-item {
+  padding: 12px 0;
+  border-bottom: 1px solid black;
+}
+
+.item-data {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  > label
+
+{
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid black;
+  &:hover
+{
+  color: white;
+  background: #262626;
+}
+
+}
+}
+
+.add-item-btn {
+  /* Auto layout */
+  width: 100%;
+  padding: 6px 12px;
+  background: black;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover
+
+{
+  opacity: 0.5;
+}
+}

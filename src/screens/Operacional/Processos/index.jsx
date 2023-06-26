@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styles.css';
 import { useNavigate } from 'react-router';
+import Frame from '../../../components/Frame';
 
 const Operacional = () => {
 	const [processosData, setProcessosData] = useState([]);
@@ -27,39 +28,39 @@ const Operacional = () => {
 	}
 
 	return (
-		<div className='processos container'>
-			<div className='processos-div' style={{ width: '100%' }}>
-				<div className='border-radius p-5 w-100'>
-					<table className='table'>
-						<thead>
-							<tr>
-								<th scope='col'>ID</th>
-								<th scope='col'>DESCRICAO</th>
-							</tr>
-						</thead>
-						<tbody id='operacional-list'>
-							{processosData.map((product) => (
-								<tr
-									key={product.idProcesso * Math.random() * 1000}
-									className='hover'
-									onClick={() =>
-										navigate('processos/' + product.idProcesso)
-									}>
-									<td className='w-5'>{product.idProcesso}</td>
-									<td className='w-5'>{product.descricao}</td>
+		<Frame>
+			<div className='processos container'>
+				<div className='processos-div' style={{ width: '100%' }}>
+					<div className='border-radius p-5 w-100'>
+						<table className='table'>
+							<thead>
+								<tr>
+									<th scope='col'>ID</th>
+									<th scope='col'>DESCRICAO</th>
 								</tr>
-							))}
-						</tbody>
-						<thead>
-							<tr>
-								<th scope='col'>ID</th>
-								<th scope='col'>DESCRICAO</th>
-							</tr>
-						</thead>
-					</table>
+							</thead>
+							<tbody id='operacional-list'>
+								{processosData.map((product) => (
+									<tr
+										key={product.idProcesso * Math.random() * 1000}
+										className='hover'
+										onClick={() => navigate('processos/' + product.idProcesso)}>
+										<td className='w-5'>{product.idProcesso}</td>
+										<td className='w-5'>{product.descricao}</td>
+									</tr>
+								))}
+							</tbody>
+							<thead>
+								<tr>
+									<th scope='col'>ID</th>
+									<th scope='col'>DESCRICAO</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
 				</div>
 			</div>
-		</div>
+		</Frame>
 	);
 };
 

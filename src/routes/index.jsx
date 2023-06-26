@@ -4,11 +4,13 @@ import ModelosVistoria from '../screens/Cadastros/Vistoria';
 import Operacional from '../screens/Operacional/Processos';
 import Vistorias from '../screens/Operacional/Processos/Vistorias';
 import RealizarConsulta from '../screens/Operacional/Processos/RealizarConsulta';
+import WelcomeMessage from '../screens/Homepage';
 
 const RoutesPaths = () => {
 	return (
 		<BrowserRouter>
 			<Routes>
+				<Route path='/' element={<WelcomeMessage />}></Route>
 				<Route path='/cadastros/processos' element={<Processos />}></Route>
 				<Route
 					path='/cadastros/vistorias'

@@ -8,6 +8,10 @@ body,
   color: rgb(0, 0, 0);
 }
 
+a{
+  text-decoration: none;
+}
+
 *,
 html {
   margin: 0;
@@ -18,7 +22,6 @@ html {
 .hover {
   cursor: pointer;
   transition: 0.3s;
-  background: red;
 }
 
   .hover:hover {
